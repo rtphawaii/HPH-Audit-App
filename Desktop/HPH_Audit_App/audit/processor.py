@@ -6,6 +6,7 @@ import os
 
 import openpyxl
 import requests
+import pandas as pd
 
 INFOR_CLIENT_ID = os.environ.get("INFOR_CLIENT_ID")
 INFOR_CLIENT_SECRET = os.environ.get("INFOR_CLIENT_SECRET")
@@ -37,7 +38,10 @@ def process_excel(file_path: str) -> dict:
 
     print("Token acquired")
 
-    
+    # Process the excel file
+    contracts_to_check=pd.read_excel(file_path)
+    print(contracts_to_check['WorkingContractID'])
+
 
     # TODO: implement audit logic here
     return {"status": "success", "message": "File received — processing placeholder ran successfully.", "data": None}
